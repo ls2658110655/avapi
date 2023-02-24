@@ -292,7 +292,7 @@ int h264codec::h264decedec(const char* ifname, const char* ofile)
 		cout << "Couldn't find h264 stream information!" << endl;
 		return -1;
 	}
-/*vindex = -1;
+	vindex = -1;
 	for (i = 0; i < fctx->nb_streams; i++)
 		if (fctx->streams[i]->codecpar->codec_type == AVMEDIA_TYPE_VIDEO) {
 			vindex = i;
@@ -302,13 +302,13 @@ int h264codec::h264decedec(const char* ifname, const char* ofile)
 	if (vindex == -1) {
 		cout << "Didn't find a h264 stream!" << endl;
 		return -1;
-	}*/
+	}
 
-	vindex = av_find_best_stream(fctx, AVMEDIA_TYPE_VIDEO, -1, -1, NULL, 0);
+/*	vindex = av_find_best_stream(fctx, AVMEDIA_TYPE_VIDEO, -1, -1, NULL, 0);
 	if (vindex < 0) {
 		cout << "Can't find H264 stream in input file!" << endl;
 		return -1;
-	}
+	}*/
 	cpar = fctx->streams[vindex]->codecpar;
 
 	c = avcodec_find_decoder(cpar->codec_id);
